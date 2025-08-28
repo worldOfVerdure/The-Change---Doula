@@ -8,7 +8,6 @@ const heroSrcSet = heroImages.map(({src, width}) => `${src} ${width}w`).join(', 
 
 const StyledHeader = styled.header`
   max-width: 250rem;
-  overflow: visible;
   width: 100%;
 
   @media (min-width: 2500px) {
@@ -26,7 +25,7 @@ const Header: FC<HeaderProps> = () => {
   return (
     <StyledHeader>
       <img 
-        alt="Hero image with business name and logo."
+        alt="The Change Doula, Menstrual Health and Menopause support"
         decoding="sync"
         fetchPriority="high"
         sizes="100vw"
