@@ -1,29 +1,28 @@
+import Box from '@mui/material/Box';
 import type { FC, HTMLAttributes } from 'react';
 import heroImages from './headerHeroImg.ts';
-import styled from '@emotion/styled';
 
 interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 const heroSrcSet = heroImages.map(({src, width}) => `${src} ${width}w`).join(', ');
 
-const StyledHeader = styled.header`
-  max-width: 250rem;
-  width: 100%;
-
-  @media (min-width: 2500px) {
-    margin: 0 auto;
-  }
-
-  & img {
-    max-height: 80vh;
-    object-fit: fill;
-    width: 100%;
-  }
-`;
-
 const Header: FC<HeaderProps> = () => {
   return (
-    <StyledHeader>
+    <Box
+      component="header"
+      sx={ theme => ({
+        maxWidth: `${theme.breakpoints.values.xxxl}px`,
+        width: '100%',
+        [theme.breakpoints.up('xxxl')]: {
+          mx: 'auto', // apply at custom breakpoint
+        },
+        '& img': {
+          maxHeight: '80vh',
+          objectFit: 'fill',
+          width: '100%'
+        }
+      })}
+    >
       <img 
         alt="The Change Doula, Menstrual Health and Menopause support"
         decoding="sync"
@@ -32,7 +31,7 @@ const Header: FC<HeaderProps> = () => {
         src={`${heroImages[11].src}`}
         srcSet={heroSrcSet}
       />
-    </StyledHeader>
+    </Box>
   );
 }
 
