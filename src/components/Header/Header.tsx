@@ -1,12 +1,9 @@
 import Box from '@mui/material/Box';
-import type { FC, HTMLAttributes } from 'react';
 import heroImages from './headerHeroImg.ts';
-
-interface HeaderProps extends HTMLAttributes<HTMLElement> {}
 
 const heroSrcSet = heroImages.map(({src, width}) => `${src} ${width}w`).join(', ');
 
-const Header: FC<HeaderProps> = () => {
+const Header = () => {
   return (
     <Box
       component="header"
